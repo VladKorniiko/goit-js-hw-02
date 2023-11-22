@@ -1,16 +1,14 @@
-function makeTransaction(quantity, pricePerDroid) {
+function makeTransaction(quantity, pricePerDroid, customerCredits) {
   const totalPrice = quantity * pricePerDroid;
-  return `You ordered ${quantity} droids worth ${totalPrice} credits!`;
+  if (customerCredits < totalPrice) {
+    return 'Insufficient funds!';
+  } else {
+    return `You ordered ${quantity} droids worth ${totalPrice} credits!`;
+  }
 }
 
-console.log(makeTransaction(5, 3000));
-console.log(makeTransaction(3, 1000));
-console.log(makeTransaction(10, 500));
-
-function add(a, b, c) {
-  const result = a + b + c;
-  return `Addition result equals ${result}`;
-}
-console.log(add(15, 27, 10));
-console.log(add(10, 20, 30));
-console.log(add(5, 10, 15));
+console.log(makeTransaction(5, 3000, 23000));
+console.log(makeTransaction(3, 1000, 15000));
+console.log(makeTransaction(10, 5000, 8000));
+console.log(makeTransaction(8, 2000, 10000));
+console.log(makeTransaction(10, 500, 5000));
